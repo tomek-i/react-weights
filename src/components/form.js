@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 
 function WeightInputForm(props) {
-    const [weight,setWeight] = useState()
+    const [weight,setWeight] = useState('')
 
 
     function handleWeightInput(event) {
