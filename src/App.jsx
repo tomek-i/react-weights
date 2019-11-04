@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './css/App.css';
 import WeightInputForm from './components/form'
 import Graph from './components/graph'
-
+import Stats from './components/stats'
 
 
 function App() {
@@ -10,22 +10,25 @@ function App() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    console.log('get local storage')
+
     const items = localStorage.getItem('data');
     if (items) {
-      console.log('set data from local storage')
       setData(JSON.parse(items))
     }
 
     return () => {
       localStorage.clear();
-      console.log('clear local storage')
     }
   }, [])
 
   function appendData(item) {
-    console.log('append data')
-    setData(data.concat(item))
+    const date = new Date()
+    const datapoint = {
+      "date": date.toLocaleDateString(),
+      "value": item
+    }
+
+    setData(data.concat(datapoint))
 
   }
   useEffect(() => {
@@ -33,8 +36,6 @@ function App() {
     if (data.length > 0) {
 
       const j = JSON.stringify(data)
-      console.log("stringify data", j);
-      console.log('save data to local storage')
       localStorage.setItem("data", j)
     }
 
@@ -44,10 +45,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
         <WeightInputForm onSubmit={appendData} />
-        <Graph data={data} />
       </header>
+      <Graph data={data} />
+      <Stats data={data} />
     </div>
   );
 }

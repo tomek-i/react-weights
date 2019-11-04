@@ -16,7 +16,7 @@ function WeightInputForm(props) {
 
   return (
     <form style={{ top: 0, position: "relative" }} onSubmit={(event) => handleSubmit(event)}>
-      <input name="weight" value={weight} placeholder="Current weight" onChange={(e) => handleWeightInput(e)} />
+      <input name="weight" value={weight} placeholder="Current weight in kg" onChange={(e) => handleWeightInput(e)} />
       <button type="submit">SUBMIT</button>
     </form>
   )
