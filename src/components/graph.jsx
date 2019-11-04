@@ -47,7 +47,7 @@ function Graph(props) {
 
 
 
-    return <Line data={data} height={130} />
+    return <Line data={data} height={120} />
   } else {
     return <p>Please enter some data</p>
   }
