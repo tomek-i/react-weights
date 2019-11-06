@@ -1,13 +1,35 @@
 require('dotenv').config();
-const Joi = require('joi');
-const _ = require('underscore');
-const express = require('express');
+const config = require('config');//
 
+const helmet = require('helmet');
+const morgan = require('morgan');
+const Joi = require('joi');
+const express = require('express');
+const logger = require('./middleware/logger');
+const _ = require('underscore');
 
 const app = express();
 
 // use json middleware
+app.use(helmet());
+
 app.use(express.json());
+//app.use(express.urlencoded({extended:true}));
+app.use(express.static('public'));
+
+if(app.get('env') ==='development'){
+    console.log('Morgan HTTP logging middleware enabled ...');
+    app.use(morgan('tiny'));
+
+    console.log('Custom logging middleware enabled ...');
+    app.use(logger);//custom logger
+};
+
+
+
+console.log('App name: '+config.get('name'));
+console.log('Mail Server: '+config.get('mail.host'));
+console.log('Mail Password: '+config.get('mail.password'));
 
 // demo data points - will come from database
 const dataPoints = [

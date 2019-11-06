@@ -1,0 +1,6 @@
+{
+    "name":"My App - DEVELOPMENT MODE",
+    "mail":{
+        "host": "dev-mail-server"
+    }
+}
