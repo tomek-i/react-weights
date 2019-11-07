@@ -1,3 +1,10 @@
 {
-    "name":"My App Name"
+  "name": "My App - DEVELOPMENT MODE",
+  "mail": {
+    "host": "dev-mail-server"
+  },
+  "db": {
+    "name": "weightbuddy_dev",
+    "connection": "mongodb://localhost"
+  }
 }

@@ -1,6 +1,10 @@
 {
-    "name":"My App",
-    "mail":{
-        "host": "prduction-server"
-    }
+  "name": "My App",
+  "mail": {
+    "host": "prduction-server"
+  },
+  "db": {
+    "name": "weightbuddy",
+    "connection": "mongodb://"
+  }
 }
