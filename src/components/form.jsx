@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 function WeightInputForm(props) {
   const [weight, setWeight] = useState('')
 
-
   function handleWeightInput(event) {
     const { value } = event.target
     setWeight(value)
   }
+
   function handleSubmit(event) {
     event.preventDefault()
     props.onSubmit(weight)

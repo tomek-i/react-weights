@@ -7,12 +7,12 @@ function Graph(props) {
 
   if (props.data) {
     // extract all dates
-    let labels = props.data.map(item => {
+    const labels = props.data.map(item => {
       const { date } = item
       return date
     })
     // extract all weights
-    let weights = props.data.map(item => {
+    const weights = props.data.map(item => {
       const { value } = item
       return value
 
