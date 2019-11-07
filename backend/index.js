@@ -1,19 +1,25 @@
 require('dotenv').config();
+const debug = require('debug')('app:init');
 require('./db/db'); //connect to db
-const debug = require('debug')('app:startup');
 
 const config = require('config');//
-
 const helmet = require('helmet');
 const morgan = require('morgan');
-
 const express = require('express');
-const logger = require('./middleware/logger');
+
 //const _ = require('underscore');
+
+
+const logger = require('./middleware/logger');
 const dataRouter = require('./routes/data')
 
 const app = express();
 
+
+debug('Debug: '+ config.get('debug'));
+debug('App name: '+ config.get('name'));
+debug('Mail Server: '+ config.get('mail.host'));
+debug('Mail Password: '+ config.get('mail.password'));
 
 
 app.use(helmet());
@@ -30,11 +36,6 @@ if(app.get('env') ==='development'){
 };
 
 app.use('/api/data',dataRouter);
-
-debug('App name: '+config.get('name'));
-debug('Mail Server: '+config.get('mail.host'));
-debug('Mail Password: '+config.get('mail.password'));
-
 
 
 app.get('/', (req, res) => {

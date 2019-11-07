@@ -9,18 +9,22 @@ const dataPointSchema = new mongoose.Schema({
 const DataPoint = mongoose.model('DataPoint',dataPointSchema);
 
 async function createDataPoint(){
+
+    const date = new Date(2020,11,7);
+
     const dataPoint = new DataPoint({
-        date:new Date().toLocaleDateString(),
-        value:99.4
+        date: date,
+        value:39.4
     })
-    const result = await dataPoint.save();
-    debug(`Created Data: ${result}`)
+    //const result = await dataPoint.save();
+    //debug(`Created Data: ${result}`)
 }
 
 async function getDataPoints(){
-    await DataPoint.find();
+    const courses = await DataPoint.find();
+    console.log(courses);
 }
-getDataPoints();
-//createDataPoint();
+//getDataPoints();
+createDataPoint();
 
 module.exports = DataPoint;
