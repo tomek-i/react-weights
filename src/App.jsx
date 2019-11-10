@@ -11,35 +11,25 @@ function App() {
 
   useEffect(() => {
 
-    //TODO: get data from BACKEND
+    axios.get('http://localhost:5000/api/data').then(result => {
 
-    axios.get('localhost:5000/api/data').then(result => {
-      console.log("GET", result);
+      setData(result.data);
     });
 
-
-    const items = localStorage.getItem('data');
-    if (items) {
-      setData(JSON.parse(items))
-    }
-
-    return () => {
-      localStorage.clear();
-    }
+    //    return () => {
+    //    }
   }, [])
 
   function appendData(item) {
-    const date = new Date()
-    const datapoint = {
-      "date": date,//.toLocaleDateString(),
-      "value": item
-    }
 
-    //TODO: POST data to backend
-    axios.post('localhost:5000/api/data', { value: item }).then(result => console.log(result));
+    axios.post('http://localhost:5000/api/data', { value: item })
+      .then(result => {
+        const { value, date } = result.data;
+        setData(data.concat({ value: value, date: date }));
+      });
 
 
-    setData(data.concat(datapoint))
+    //setData(data.concat(datapoint))
 
   }
 
@@ -47,10 +37,8 @@ function App() {
   useEffect(() => {
     //TODO: probably not required anymore?
     if (data.length > 0) {
-
-      const j = JSON.stringify(data)
-
-      localStorage.setItem("data", j)
+      //const j = JSON.stringify(data)
+      //localStorage.setItem("data", j)
     }
 
   }, [data])

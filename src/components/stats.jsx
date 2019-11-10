@@ -6,7 +6,7 @@ function Stats(props) {
     let max_weight = 0
 
     if (props.data) {
-        const values = props.data.map(obj => parseFloat(obj.value))
+        const values = props.data.map(obj => obj.value.$numberDecimal)
         if (values) {
             [max_weight, min_weight] = [Math.max(...values), Math.min(...values)]
         }

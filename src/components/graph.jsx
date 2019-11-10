@@ -9,13 +9,12 @@ function Graph(props) {
     // extract all dates
     const labels = props.data.map(item => {
       const { date } = item
-      return date
+      return new Date(date).toLocaleDateString();
     })
     // extract all weights
     const weights = props.data.map(item => {
       const { value } = item
-      return value
-
+      return value.$numberDecimal
     })
 
 
