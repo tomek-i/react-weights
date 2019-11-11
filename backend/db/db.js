@@ -9,4 +9,4 @@ debug(`Using Database '${dbname}' at host '${dbhost}'`)
 
 mongoose.connect(`${dbhost}/${dbname}`)
     .then(() => debug('Connected to Database successfully.'))
-    .catch(err => console.error('Could not connect to MongoDB.',err));
+    .catch(err => {console.error('Could not connect to MongoDB.',err);debug('Connection error',err)});

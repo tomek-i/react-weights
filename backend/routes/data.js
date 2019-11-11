@@ -48,10 +48,8 @@ function validateDataPoint(dataPoint) {
     return Joi.validate(dataPoint,schema);
 }
 
-module.exports = router;
 
 
-/* *** BELOW ONES ARE NOT WORKING PROPERLY ... need to study mongo/mongoose *** */
 
 router.get('/:year/:month', (req, res) => {
 
@@ -79,6 +77,9 @@ router.get('/:year', (req, res) => {
     });
 
 });
+
+
+module.exports = router;
 
 /* NOT REQUIRED/IMPLEMENTED, FOR REFERENCE
 router.delete('/:id',(req,res) => {
