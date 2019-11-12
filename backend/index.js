@@ -1,18 +1,21 @@
 require('dotenv').config();
 const debug = require('debug')('app:init');
-require('./db/db'); //connect to db
-
 const config = require('config'); //
 const helmet = require('helmet');
 const morgan = require('morgan');
 const express = require('express');
 const cors = require('cors');
+
 //const _ = require('underscore');
 
 const logger = require('./middleware/logger');
 const dataRouter = require('./routes/data');
+const connectDB = require('./db/db'); //connect to db
 
 const app = express();
+
+//Connect to DB
+connectDB();
 
 debug('Debug: ' + config.get('debug'));
 debug('App name: ' + config.get('name'));

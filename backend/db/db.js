@@ -7,10 +7,14 @@ const dbhost = config.get('db.connection');
 
 debug(`Using Database '${dbname}' at host '${dbhost}'`);
 
-mongoose
-  .connect(`${dbhost}/${dbname}`)
-  .then(() => debug('Connected to Database successfully.'))
-  .catch(err => {
-    console.error('Could not connect to MongoDB.', err);
-    debug('Connection error', err);
-  });
+const connectDB = async () => {
+  try {
+    await mongoose.connect(`${dbhost}/${dbname}`, { useNewUrlParser: true });
+    debug('Connected to Database successfully.');
+  } catch (error) {
+    debug('Connection error', error);
+    process.exit(1);
+  }
+};
+
+module.exports = connectDB;
