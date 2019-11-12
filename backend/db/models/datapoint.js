@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Joi = require('Joi');
 //const debug = require('debug')('app:model');
 
 const dataPointSchema = new mongoose.Schema({
@@ -13,4 +14,18 @@ const dataPointSchema = new mongoose.Schema({
 
 const DataPoint = mongoose.model('DataPoint', dataPointSchema);
 
-module.exports = DataPoint;
+function validateDataPoint(dataPoint) {
+  const schema = {
+    date: Joi.date().optional(),
+    value: Joi.number()
+      .positive()
+      .precision(2)
+      .min(40)
+      .max(99)
+      .required()
+  };
+  return Joi.validate(dataPoint, schema);
+}
+
+exports.DataPoint = DataPoint;
+exports.validate = validateDataPoint;

@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
-const Joi = require('joi');
-const DataPoint = require('../db/models/datapoint');
 const debug = require('debug')('app:crud');
+const { DataPoint, validate } = require('../db/models/datapoint');
+const router = express.Router();
+
+//TODO: for readability maybe split the routes from the logic (controller?) to read: router.get('/', Controller.GET), router.post('/', Controller.POST), router.get('/:year', Controller.ByYear)
 
 router.get('/', (req, res) => {
   DataPoint.find()
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { error } = validateDataPoint(req.body);
+  const { error } = validate(req.body);
 
   if (error) {
     // respond back with '400 Bad Request' with error details
@@ -40,17 +41,6 @@ router.post('/', (req, res) => {
     .catch(err => debug('Error while saving to database.', err));
 });
 
-function validateDataPoint(dataPoint) {
-  const schema = {
-    date: Joi.date().optional(),
-    value: Joi.number()
-      .positive()
-      .precision(2)
-      .required()
-  };
-  return Joi.validate(dataPoint, schema);
-}
-
 router.get('/:year/:month', (req, res) => {
   DataPoint.find({
     date: {
@@ -74,21 +64,3 @@ router.get('/:year', (req, res) => {
 });
 
 module.exports = router;
-
-/* NOT REQUIRED/IMPLEMENTED, FOR REFERENCE
-router.delete('/:id',(req,res) => {
-    const dataPoint = dataPoints.find(c=> c.id === parseInt(req.params.id));
-
-    if(!dataPoint) {
-        return res.status(404).send('No data point with that ID was found.');
-    }
-
-    const index = dataPoints.indexOf(dataPoint);
-    dataPoints.splice(index,1);
-
-    res.send(dataPoint);
-});
-
-
-
-*/
