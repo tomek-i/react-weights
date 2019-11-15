@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Joi = require('Joi');
+const mongoose = require("mongoose");
+const Joi = require("Joi");
 //const debug = require('debug')('app:model');
 
 const dataPointSchema = new mongoose.Schema({
@@ -12,7 +12,7 @@ const dataPointSchema = new mongoose.Schema({
   }
 });
 
-const DataPoint = mongoose.model('DataPoint', dataPointSchema);
+const DataPoint = mongoose.model("DataPoint", dataPointSchema);
 
 function validateDataPoint(dataPoint) {
   const schema = {
@@ -27,5 +27,5 @@ function validateDataPoint(dataPoint) {
   return Joi.validate(dataPoint, schema);
 }
 
-exports.DataPoint = DataPoint;
+exports.DataPointModel = DataPoint;
 exports.validate = validateDataPoint;
