@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
 
-    axios.get('http://localhost:5000/api/data').then(result => {
+    axios.get('http://localhost:5000/api/data/').then(result => {
 
       setData(result.data);
     });
@@ -22,11 +22,13 @@ function App() {
 
   function appendData(item) {
 
-    axios.post('http://localhost:5000/api/data', { value: item })
+    axios.post('http://localhost:5000/api/data/', { value: item })
       .then(result => {
         const { value, date } = result.data;
         setData(data.concat({ value: value, date: date }));
-      });
+      }).catch(reason =>
+        console.log(reason)
+      );
 
 
     //setData(data.concat(datapoint))
