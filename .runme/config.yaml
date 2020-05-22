@@ -2,7 +2,7 @@ version: 1.0
 publish: app
 services:
   app:
-    command: npm install && node index.js
+    command: node index.js
     environment:
       debug: 'app:*'
       app_password: 'testing'
