@@ -1,5 +1,5 @@
 FROM node:14.0.0
 WORKDIR /app
-COPY . .
+COPY package*.json ./
 RUN npm install
-ENTRYPOINT npm run start
+COPY . .
