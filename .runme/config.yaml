@@ -8,10 +8,7 @@ services:
     environment:
       debug: 'app:*'
       app_password: 'testing'
-    volumes:
-      - .:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
-    command: npm start
+    command: npm run start
     ports:
       - container: 3000
         public: 80

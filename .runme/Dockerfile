@@ -1,6 +1,6 @@
-FROM node:14.0.0
+FROM node:latest
 WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install && npm cache clean --force --loglevel=error
 COPY . .
-CMD [ "node", "index.js"]
+ENTRYPOINT npm run start
