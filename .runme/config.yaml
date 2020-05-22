@@ -4,14 +4,12 @@ services:
   app:
     command: npm run start
     environment:
-      debug: '"app:*"'
-      app_password: '"testing"'
+      debug: 'app:*'
+      app_password: 'testing'
     build:
       type: dockerfile
       config: ./.runme/Dockerfile
     ports:
       - container: 3000
         public: 80
-  service_1:
-    command: ""
-    image: mongo:latest
+  
