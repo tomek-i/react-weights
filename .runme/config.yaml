@@ -2,8 +2,6 @@ version: 1.0
 publish: app
 services:
   app:
-    volumes:
-      - ./:/home/node/app
     working_dir: /home/node/app
     build:
       type: dockerfile
