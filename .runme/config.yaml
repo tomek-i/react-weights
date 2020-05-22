@@ -9,7 +9,7 @@ services:
     environment:
       debug: 'app:*'
       app_password: 'testing'
-    command: ["npm install","npm run start"]
+    command: npm run start
     ports:
       - container: 3000
         public: 80
