@@ -2,9 +2,6 @@ version: 1.0
 publish: app
 services:
   app:
-    volumes:
-      - name: node_modules
-        mount: /home/node/app/node_modules
     working_dir: /home/node/app
     build:
       type: dockerfile
@@ -12,7 +9,7 @@ services:
     environment:
       debug: 'app:*'
       app_password: 'testing'
-    command: npm run start
+    command: ["npm install","npm run start"]
     ports:
       - container: 3000
         public: 80
