@@ -2,7 +2,7 @@ version: 1.0
 publish: app
 services:
   app:
-    command: npm run start
+    command: 'echo "test"'
     environment:
       debug: 'app:*'
       app_password: 'testing'
