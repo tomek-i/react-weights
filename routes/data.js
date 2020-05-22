@@ -7,13 +7,17 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   DataPoint.find()
-    .then(result => res.send(result))
+    .then(result => 
+      {
+        debug("Data: "+ result);
+        res.send(result);
+      })
     .catch(err => debug('Error while retrieving data.', err));
 });
 
 router.post('/', (req, res) => {
   const { error } = validate(req.body);
-
+  debug(req.body)
   if (error) {
     // respond back with '400 Bad Request' with error details
     return res.status(400).send(error.details[0].message);
