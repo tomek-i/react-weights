@@ -2,16 +2,16 @@ version: 1.0
 publish: app
 services:
   app:
-    command: node index.js
-    environment:
-      debug: 'app:*'
-      app_password: 'testing'
     build:
       type: dockerfile
       config: ./.runme/Dockerfile
+    environment:
+      debug: 'app:*'
+      app_password: 'testing'
     ports:
       - container: 3000
         public: 80
     volumes:
-      - .:/usr/app/
-      - /usr/app/node_modules
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm start
