@@ -6,9 +6,20 @@ services:
       type: dockerfile
       config: ./.runme/Dockerfile
     environment:
-      debug: 'app:*'
-      app_password: 'testing'
+      NODE_ENV: production
+      DEBUG: app:*
+      APP_PW: test
+      DB_NAME: weightbuddy
+      DB_CONNECTION: mongodb://mongo:27017
     command: npm run start
     ports:
       - container: 3000
         public: 80
+    depends_on: 
+      - mongo
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    ports: 
+      - 27017:27017
