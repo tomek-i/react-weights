@@ -14,11 +14,10 @@ const dataRouter = require('./routes/data');
 const connectDB = require('./db/db'); //connect to db
 
 const app = express();
-
 //Connect to DB
 connectDB();
 
-debug('Debug: ' + config.get('debug'));
+debug('Debug Namespaces: ' + config.get('debug'));
 debug('App name: ' + config.get('name'));
 debug('Mail Server: ' + config.get('mail.host'));
 debug('Mail Password: ' + config.get('mail.password'));
