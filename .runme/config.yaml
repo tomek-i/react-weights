@@ -13,7 +13,7 @@ services:
       DB_CONNECTION: mongodb://mongo
     command: npm run start
     ports:
-      - container: 3000
+      - container: 3001
         public: 80
     depends_on: 
       - mongo
