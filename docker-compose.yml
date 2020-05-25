@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  react-weights:
+    image: react-weights
+    build: .
+    environment:
+      NODE_ENV: production
+      DEBUG: app:*
+      APP_PW: test
+      DB_NAME: weightbuddy
+      DB_CONNECTION: mongodb://mongo:27017
+    ports:
+      - 80:3001
+    depends_on: 
+      - mongo
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    ports: 
+      - 27017:27017
