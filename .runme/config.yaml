@@ -10,7 +10,7 @@ services:
       DEBUG: app:*
       APP_PW: test
       DB_NAME: weightbuddy
-      DB_CONNECTION: mongodb://mongo:27017
+      DB_CONNECTION: mongodb://mongo
     command: npm run start
     ports:
       - container: 3000
@@ -21,6 +21,3 @@ services:
       - mongo
   mongo:
     image: mongo
-    ports: 
-      - container: 27017
-        public: 27017
