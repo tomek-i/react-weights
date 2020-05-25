@@ -1,6 +1,10 @@
 {
-  "debug": "debug",
+  "debug": "DEBUG",
   "mail": {
-    "password": "app_password"
+    "password": "APP_PW"
+  },
+  "db":{
+    "name":"DB_NAME",
+    "connection":"DB_CONNECTION"
   }
 }
