@@ -7,7 +7,7 @@ services:
     environment:
       NODE_ENV: production
       DEBUG: app:*
-      APP_PW: test
+      APP_PW: myrandompassword
       DB_NAME: weightbuddy
       DB_CONNECTION: mongodb://mongo:27017
     ports:
