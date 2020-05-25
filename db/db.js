@@ -9,7 +9,7 @@ debug(`Using Database '${dbname}' at host '${dbhost}'`);
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(`${dbhost}/${dbname}`, { useNewUrlParser: true });
+    await mongoose.connect(`${dbhost}/${dbname}`, { useUnifiedTopology: true,useNewUrlParser: true });
     debug('Connected to Database successfully.');
   } catch (error) {
     debug('Connection error', error);
