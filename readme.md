@@ -12,3 +12,7 @@ Feel free to send me any suggestions and improvements. Happy to improve and lear
 
 This is still an ongoing project and want to flesh it out during my spare time.
 Like including full backend, api, user authentication and management and various other data points to track and display. 
+
+
+
+continue development will be on this repository: https://github.com/tomek-i/fitness-pal
