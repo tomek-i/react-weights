@@ -1,4 +1,6 @@
 
+![Example picture](/example.JPG?raw=true "Simple React weight tracker example")
+
 This project was bootstrapped with Create React App.
 
 Disclaimer
