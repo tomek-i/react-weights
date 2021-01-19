@@ -1,18 +1,14 @@
 
+![Example picture](/example.JPG?raw=true "Simple React weight tracker example")
+
 This project was bootstrapped with Create React App.
 
 Disclaimer
 
-This project is just a little exercise working with React, Node.js and MongoDB and for my personal use. It is not production ready and the code base is provided as is.
+This project is just a little exercise working with React, Node.js and MongoDB after watching a few tutorials on react.
+I picked a random project idea and tried to create this project by applying what I read about react without following a tutorial.
+It is not production ready and the code base is provided as is.
 
-Feel free to send me any suggestions and improvements. Happy to improve and learn from them.
+I decided to continue by implemting a backend, and with actually restarted a new project here: https://github.com/tomek-i/fitness-pal
 
-
-
-
-This is still an ongoing project and want to flesh it out during my spare time.
-Like including full backend, api, user authentication and management and various other data points to track and display. 
-
-
-
-continue development will be on this repository: https://github.com/tomek-i/fitness-pal
+My goal is to do a full web app for personal fitness goals, including API, authentication, user management, various data points and visualisation etc.
