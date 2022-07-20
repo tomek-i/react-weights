@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Joi = require('Joi');
+const Joi = require('@hapi/joi');
 //const debug = require('debug')('app:model');
 
 const dataPointSchema = new mongoose.Schema({
@@ -15,7 +15,7 @@ const dataPointSchema = new mongoose.Schema({
 const DataPoint = mongoose.model('DataPoint', dataPointSchema);
 
 function validateDataPoint(dataPoint) {
-  const schema = {
+  const schema = Joi.object({
     date: Joi.date().optional(),
     value: Joi.number()
       .positive()
@@ -23,8 +23,8 @@ function validateDataPoint(dataPoint) {
       .min(40)
       .max(99)
       .required()
-  };
-  return Joi.validate(dataPoint, schema);
+  });
+  return schema.validate(dataPoint);
 }
 
 exports.DataPoint = DataPoint;

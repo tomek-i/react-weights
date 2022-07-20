@@ -1,0 +1,23 @@
+version: 1.0
+publish: app
+services:
+  app:
+    build:
+      type: dockerfile
+      config: ./.runme/Dockerfile
+    environment:
+      NODE_ENV: production
+      DEBUG: app:*
+      APP_PW: test
+      DB_NAME: weightbuddy
+      DB_CONNECTION: mongodb://mongo
+    command: npm run start
+    ports:
+      - container: 3001
+        public: 80
+    depends_on: 
+      - mongo
+    links:
+      - mongo
+  mongo:
+    image: mongo

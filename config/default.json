@@ -1,10 +1,11 @@
 {
+  "debug":"app:*",
   "name": "My App - DEVELOPMENT MODE",
   "mail": {
     "host": "dev-mail-server"
   },
   "db": {
     "name": "weightbuddy_dev",
-    "connection": "mongodb://localhost"
+    "connection": "mongodb://mongo:27018"
   }
 }

@@ -4,6 +4,7 @@ const config = require('config'); //
 const helmet = require('helmet');
 const morgan = require('morgan');
 const express = require('express');
+const path = require('path')
 const cors = require('cors');
 
 //const _ = require('underscore');
@@ -13,11 +14,10 @@ const dataRouter = require('./routes/data');
 const connectDB = require('./db/db'); //connect to db
 
 const app = express();
-
 //Connect to DB
 connectDB();
 
-debug('Debug: ' + config.get('debug'));
+debug('Debug Namespaces: ' + config.get('debug'));
 debug('App name: ' + config.get('name'));
 debug('Mail Server: ' + config.get('mail.host'));
 debug('Mail Password: ' + config.get('mail.password'));
@@ -42,6 +42,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(express.static('public'));
 
 if (app.get('env') === 'development') {
@@ -54,7 +55,12 @@ if (app.get('env') === 'development') {
 
 app.use('/api/data', dataRouter);
 
-const port = process.env.PORT || 3000;
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
+
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   debug(`listening on port ${port} ...`);
 });

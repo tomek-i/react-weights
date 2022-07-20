@@ -9,11 +9,8 @@ debug(`Using Database '${dbname}' at host '${dbhost}'`);
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(`${dbhost}/${dbname}`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-    debug("Connected to Database successfully.");
+    await mongoose.connect(`${dbhost}/${dbname}`, { useUnifiedTopology: true,useNewUrlParser: true });
+    debug('Connected to Database successfully.');
   } catch (error) {
     debug("Connection error", error);
     process.exit(1);
