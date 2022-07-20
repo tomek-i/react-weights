@@ -26,7 +26,9 @@ function App() {
       .then(result => {
         const { value, date } = result.data;
         setData(data.concat({ value: value, date: date }));
-      });
+      }).catch(reason =>
+        console.log(reason)
+      );
 
 
     //setData(data.concat(datapoint))

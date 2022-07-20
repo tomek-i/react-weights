@@ -23,12 +23,12 @@ debug('Mail Server: ' + config.get('mail.host'));
 debug('Mail Password: ' + config.get('mail.password'));
 
 // Set up a whitelist and check against it:
-var whitelist = [
+const whitelist = [
   'http://localhost:5000',
   'http://localhost:3001',
   'http://localhost:3001/api/data'
 ];
-var corsOptions = {
+const corsOptions = {
   origin: function(origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
